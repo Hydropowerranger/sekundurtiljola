@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>Sekúndur til Jóla</title>
+  <script language="Javascript" type="text/javascript">
+      function getSecondsUntilChristmas() {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        
+        // Target date: December 24th, 18:00
+        let targetDate = new Date(currentYear, 11, 24, 18, 0, 0);
+
+        // If target time has already passed, set for next year
+        if (now > targetDate) {
+          targetDate = new Date(currentYear + 1, 11, 24, 18, 0, 0);
+        }
+
+        // Calculate the difference in seconds
+        return Math.floor((targetDate - now) / 1000);
+      }
+
+      function startClock() {
+        const seconds = getSecondsUntilChristmas();
+        const d = document.getElementById("sekundur");
+        d.innerHTML = seconds;
+        setTimeout(startClock, 1000); // Update every second
+      }
+  </script>
+</head>
+<body style="color: rgb(255, 0, 0); background-color: rgb(51, 204, 0);">
+  <div style="text-align: center; font-size: 24pt;">
+    Núna eru <span id="sekundur">-95877872</span> sekúndur til jóla!
+    <script type="text/javascript">
+      startClock();
+    </script>
+  </div>
+</body>
+</html>
